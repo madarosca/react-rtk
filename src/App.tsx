@@ -20,6 +20,10 @@ function App() {
 						path='counter'
 						element={<Counter />}
 					/>
+					<Route
+						path='login'
+						element={<div>Login</div>}
+					/>
 				</Route>
 			</Routes>
 		</div>
