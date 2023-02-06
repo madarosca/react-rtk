@@ -31,6 +31,12 @@ const MoviesList = () => {
 							movie={movie}
 						/>
 					))}
+					<br />
+					<footer>
+						<small>
+							<i>Fetched movies with RTK createAsyncThunk</i>
+						</small>
+					</footer>
 				</div>
 			)}
 		</div>

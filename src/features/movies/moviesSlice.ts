@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { MovieItemType } from './moviesTypes';
-import { BASE_URL } from '../../constants/api';
+import { BASE_URL, MOVIES_URL } from '../../constants/api';
 
 export interface MoviesState {
 	count: number;
@@ -16,7 +16,7 @@ const initialState: MoviesState = {
 };
 
 export const getMoviesAsync = createAsyncThunk('movies/fetchMovies', async () => {
-	const response = await fetch(`${BASE_URL}/films`);
+	const response = await fetch(`${BASE_URL}/${MOVIES_URL}`);
 	const data = await response.json();
 
 	return data;
