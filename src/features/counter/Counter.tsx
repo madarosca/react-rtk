@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { decrement, increment, incrementByAmount, incrementAsync, incrementIfOdd, selectCount } from './counterSlice';
@@ -11,19 +11,26 @@ export function Counter() {
 
 	const incrementValue = Number(incrementAmount) || 0;
 
+	const handleDecrement = () => dispatch(decrement());
+	const handleIncrement = () => dispatch(increment());
+	const handleSetIncrement = ({ target }: ChangeEvent<HTMLInputElement>) => setIncrementAmount(target.value);
+	const handleIncrementByAmount = () => dispatch(incrementByAmount(incrementValue));
+	const handleIncrementIfOdd = () => dispatch(incrementIfOdd(incrementValue));
+	const handleIncrementAsync = () => dispatch(incrementAsync(incrementValue));
+
 	return (
 		<div className='counter-container'>
 			<div className='row'>
 				<button
 					aria-label='Decrement value'
-					onClick={() => dispatch(decrement())}
+					onClick={handleDecrement}
 				>
 					-
 				</button>
 				<span className='value'>{count}</span>
 				<button
 					aria-label='Increment value'
-					onClick={() => dispatch(increment())}
+					onClick={handleIncrement}
 				>
 					+
 				</button>
@@ -33,16 +40,16 @@ export function Counter() {
 					className='textbox'
 					aria-label='Set increment amount'
 					value={incrementAmount}
-					onChange={(e) => setIncrementAmount(e.target.value)}
+					onChange={handleSetIncrement}
 				/>
-				<button onClick={() => dispatch(incrementByAmount(incrementValue))}>Add Amount</button>
+				<button onClick={handleIncrementByAmount}>Add Amount</button>
 				<button
 					className='asyncButton'
-					onClick={() => dispatch(incrementAsync(incrementValue))}
+					onClick={handleIncrementAsync}
 				>
 					Add Async
 				</button>
-				<button onClick={() => dispatch(incrementIfOdd(incrementValue))}>Add If Odd</button>
+				<button onClick={handleIncrementIfOdd}>Add If Odd</button>
 			</div>
 		</div>
 	);

@@ -1,8 +1,10 @@
 import { Counter } from './features/counter/Counter';
 import { Route, Routes } from 'react-router-dom';
-import './App.scss';
 import Navigation from './routes/Navigation';
-import Home from './components/Home';
+import Home from './components/home/Home';
+import Movies from './features/movies/MoviesList';
+import './App.scss';
+import MovieDetails from './features/movies/MovieDetails';
 
 function App() {
 	return (
@@ -19,6 +21,14 @@ function App() {
 					<Route
 						path='counter'
 						element={<Counter />}
+					/>
+					<Route
+						path='movies'
+						element={<Movies />}
+					/>
+					<Route
+						path='/movies/:movieId'
+						element={<MovieDetails />}
 					/>
 					<Route
 						path='login'

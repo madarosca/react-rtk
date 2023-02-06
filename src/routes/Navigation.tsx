@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ReactComponent as NavLogo } from '../assets/logo.svg';
-import { COUNTER_ROUTE, LOGIN_ROUTE } from '../constants/routes';
+import { COUNTER_ROUTE, MOVIES_ROUTE, LOGIN_ROUTE } from '../constants/routes';
 import './Navigation.scss';
 
 const Navigation = () => {
@@ -20,6 +20,12 @@ const Navigation = () => {
 						className={`nav-link ${getActiveLink(COUNTER_ROUTE)}`}
 					>
 						Counter
+					</Link>
+					<Link
+						to='movies'
+						className={`nav-link ${getActiveLink(MOVIES_ROUTE)}`}
+					>
+						Movies
 					</Link>
 					<Link
 						to='login'
