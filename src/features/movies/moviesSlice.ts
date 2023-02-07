@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
+import { AppThunk, RootState } from '../../app/store';
 import { MovieItemType } from './moviesTypes';
 import { BASE_URL, MOVIES_URL } from '../../constants/api';
+import episode1 from '../../assets/episode_1.jpg';
+import episode2 from '../../assets/episode_2.jpg';
 
 export interface MoviesState {
 	count: number;
@@ -41,7 +43,11 @@ export const moviesSlice = createSlice({
 			.addCase(getMoviesAsync.fulfilled, (state, action) => {
 				state.status = 'idle';
 				state.count = action.payload.count;
-				state.moviesList = action.payload.results;
+
+				const orderedMovies = action.payload.results.sort(
+					(a: MovieItemType, b: MovieItemType) => a.episode_id - b.episode_id
+				);
+				state.moviesList = orderedMovies;
 			})
 			.addCase(getMoviesAsync.rejected, (state) => {
 				state.status = 'failed';

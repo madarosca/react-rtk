@@ -3,6 +3,7 @@ import MovieItem from '../../components/movie-item/MovieItem';
 import { getMoviesAsync, selectMovies, selectMoviesCount, selectMoviesStatus } from './moviesSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useEffect } from 'react';
+import BigLoader from '../../components/loader/BigLoader';
 
 const MoviesList = () => {
 	const moviesCount = useAppSelector(selectMoviesCount);
@@ -18,10 +19,10 @@ const MoviesList = () => {
 	}, [dispatch]);
 
 	return (
-		<div className='movies-container'>
+		<div className='movies-container py-4 px-4'>
 			<header>All Star Wars movies</header>
 			{isLoading === 'loading' ? (
-				<div>Loading...</div>
+				<BigLoader />
 			) : (
 				<div className='movie-item-container'>
 					<p>Total Episodes: {moviesCount}</p>

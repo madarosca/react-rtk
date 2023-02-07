@@ -1,40 +1,53 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ReactComponent as NavLogo } from '../assets/logo.svg';
-import { COUNTER_ROUTE, MOVIES_ROUTE, LOGIN_ROUTE } from '../constants/routes';
-import './Navigation.scss';
+import { NAVIGATION_LINKS, BASE_ROUTE } from '../constants/routes';
 
 const Navigation = () => {
 	const location = useLocation();
-	const getActiveLink = (name: string) => (!!location.pathname.includes(name) ? 'active' : '');
+	const [navbarOpen, setNavbarOpen] = useState(false);
+	const getActiveLink = (name: string) => (!!location.pathname.includes(name) ? 'text-violet-900' : 'text-black');
+	const handleNavbarOpen = () => setNavbarOpen(!navbarOpen);
 
 	return (
 		<Fragment>
-			<div className='navigation-container'>
-				<Link to='/'>
-					<NavLogo className='nav-logo' />
-				</Link>
-				<div className='nav-links'>
-					<Link
-						to='counter'
-						className={`nav-link ${getActiveLink(COUNTER_ROUTE)}`}
+			<nav
+				className='relative flex flex-wrap items-center justify-between px-2 py-2 bg-violet-200/80 backdrop-blur 
+    drop-shadow-[0px_7px_5px_rgba(8,145,178,0.1)]'
+			>
+				<div className='container px-4 mx-auto flex flex-wrap items-center justify-between'>
+					<div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
+						<Link to={BASE_ROUTE}>
+							<NavLogo className='fill-current h-12 w-12' />
+						</Link>
+						<button
+							className='text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
+							type='button'
+							onClick={handleNavbarOpen}
+						>
+							<i className='fas fa-bars'>show/hide</i>
+						</button>
+					</div>
+					<div
+						className={'lg:flex flex-grow items-center' + (navbarOpen ? ' flex' : ' hidden')}
+						id='example-navbar-danger'
 					>
-						Counter
-					</Link>
-					<Link
-						to='movies'
-						className={`nav-link ${getActiveLink(MOVIES_ROUTE)}`}
-					>
-						Movies
-					</Link>
-					<Link
-						to='login'
-						className={`nav-link ${getActiveLink(LOGIN_ROUTE)}`}
-					>
-						Login
-					</Link>
+						<ul className='flex flex-col lg:flex-row list-none lg:ml-auto'>
+							{NAVIGATION_LINKS.map((route, index) => (
+								<Link
+									key={index}
+									to={route}
+									className={`${getActiveLink(
+										route
+									)} lg:px-3 py-2 flex items-center text-xs uppercase font-bold hover:text-violet-800`}
+								>
+									<span className='ml-2'>{route}</span>
+								</Link>
+							))}
+						</ul>
+					</div>
 				</div>
-			</div>
+			</nav>
 			<Outlet />
 		</Fragment>
 	);

@@ -8,11 +8,11 @@ type MovieItemProps = {
 };
 
 const MovieItem: FC<MovieItemProps> = ({ movie }) => {
-	const { url, title } = movie;
+	const { url, title, episode_id } = movie;
 
 	return (
 		<div className='movie-item-link'>
-			<Link to={`${url.charAt(url.length - 2)}`}>{title}</Link>;
+            <Link to={`${url.charAt(url.length - 2)}`}>Episode {episode_id}: {title}</Link>;
 		</div>
 	);
 };

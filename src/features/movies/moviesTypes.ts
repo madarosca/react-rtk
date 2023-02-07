@@ -4,6 +4,8 @@ export type MovieItemType = {
 	episode_id: number;
 	url: string;
 	release_date: string;
+	opening_crawl: string;
+	imgUrl: string;
 };
 
 export type Movies = {

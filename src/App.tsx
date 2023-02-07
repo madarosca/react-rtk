@@ -8,7 +8,7 @@ import MovieDetails from './features/movies/MovieDetails';
 
 function App() {
 	return (
-		<div className='app'>
+		<div className='app h-screen w-full bg-gradient-to-b from-white via-white to-violet-400'>
 			<Routes>
 				<Route
 					path='/'
