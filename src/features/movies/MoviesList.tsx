@@ -19,13 +19,13 @@ const MoviesList = () => {
 	}, [dispatch]);
 
 	return (
-		<div className='movies-container py-4 px-4'>
+		<div className='max-w-screen-lg mx-auto flex flex-col items-center py-4 xs:flex-row'>
 			<header>All Star Wars movies</header>
 			{isLoading === 'loading' ? (
 				<BigLoader />
 			) : (
-				<div className='movie-item-container'>
-					<p>Total Episodes: {moviesCount}</p>
+				<div className='flex flex-col p-2'>
+					<div className='text-center pb-4'>Total Episodes: {moviesCount}</div>
 					{movies?.map((movie) => (
 						<MovieItem
 							key={movie.episode_id}
