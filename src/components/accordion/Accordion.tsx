@@ -9,13 +9,13 @@ type AccordionProps = {
 
 const Accordion: FC<AccordionProps> = ({ title, children, index }) => {
 	const [activeIndex, setActiveIndex] = useState(0);
-    const handleSetIndex = () => (activeIndex !== index ? setActiveIndex(index) : setActiveIndex(0));
-    
+	const handleSetIndex = () => (activeIndex !== index ? setActiveIndex(index) : setActiveIndex(0));
+
 	return (
-		<div className='p-2 border border-gray-200 bg-violet-300 text-black cursor-pointer hover:opacity-80'>
+		<div className='p-2 border border-gray-200 bg-violet-300 text-black cursor-pointer hover:opacity-80 transition ease-in duration-200'>
 			<div
 				onClick={handleSetIndex}
-				className='flex w-full justify-between p-2 mt-2 transition ease-in duration-200'
+				className='flex w-full justify-between p-2 mt-2'
 			>
 				<div className='text-md'>{title}</div>
 				<div className='ml-4'>
