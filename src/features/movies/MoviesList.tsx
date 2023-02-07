@@ -19,8 +19,8 @@ const MoviesList = () => {
 	}, [dispatch]);
 
 	return (
-		<div className='max-w-screen-sm mx-auto flex flex-col items-center py-4 xs:flex-row'>
-			<header className='font-medium'>All Star Wars movies</header>
+		<div className='max-w-screen-sm mx-auto flex flex-col items-center py-4 xs:flex-row h-auto'>
+			<header className='font-medium text-violet-900'>All Star Wars movies</header>
 			{isLoading === 'loading' ? (
 				<BigLoader />
 			) : (

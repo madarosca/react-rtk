@@ -44,7 +44,7 @@ const MovieDetails = () => {
 	};
 
 	return (
-		<div className='max-w-screen-lg mx-auto flex flex-col items-center py-4 xs:flex-row'>
+		<div className='max-w-screen-lg mx-auto flex flex-col items-center py-4 xs:flex-row h-auto'>
 			{isLoading ? (
 				<SmallLoader />
 			) : (
