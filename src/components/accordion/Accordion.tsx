@@ -1,5 +1,5 @@
 import { useState, FC, ReactNode } from 'react';
-import { BsChevronDoubleDown, BsChevronDoubleUp } from 'react-icons/bs';
+import { TbChevronDown, TbChevronUp } from 'react-icons/tb';
 
 type AccordionProps = {
 	title: string | ReactNode;
@@ -8,28 +8,32 @@ type AccordionProps = {
 };
 
 const Accordion: FC<AccordionProps> = ({ title, children, index }) => {
-	const [activeIndex, setActiveIndex] = useState(0);
-	const handleSetIndex = () => (activeIndex !== index ? setActiveIndex(index) : setActiveIndex(0));
+    const [activeIndex, setActiveIndex] = useState(0);
+    const handleSetIndex = () => (activeIndex !== index ? setActiveIndex(index) : setActiveIndex(0));
 
-	return (
-		<div className='p-2 border border-gray-200 bg-violet-300 text-black cursor-pointer hover:opacity-80 transition ease-in duration-200'>
+    return (
+		<div
+			className={`p-2 border border-gray-200 bg-violet-300 text-black cursor-pointer ${
+				activeIndex !== index ? 'hover:opacity-80 transition ease-in duration-300' : 'hover:opacity-100'
+			}`}
+		>
 			<div
 				onClick={handleSetIndex}
-				className='flex w-full justify-between p-2 mt-2'
+				className={`flex w-full justify-between p-2 mt-2 ${
+					activeIndex === index ? 'border-b border-violet-200/80' : 'border-b-0'
+				}`}
 			>
-				<div className='text-md'>{title}</div>
+				<div className='text-xl'>{title}</div>
 				<div className='ml-4'>
 					{activeIndex === index ? (
-						<BsChevronDoubleDown className='w-6 h-6' />
+						<TbChevronUp className='w-6 h-6' />
 					) : (
-						<BsChevronDoubleUp className='w-6 h-6' />
+						<TbChevronDown className='w-6 h-6' />
 					)}
 				</div>
 			</div>
 
-			{activeIndex === index && (
-				<div className='shadow-3xl rounded-2xl shadow-violet-500/50 p-2 hover:opacity-100'>{children}</div>
-			)}
+			{activeIndex === index && <div className='shadow-3xl rounded-2xl shadow-violet-500/50 p-2'>{children}</div>}
 		</div>
 	);
 };

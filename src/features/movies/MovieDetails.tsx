@@ -8,6 +8,7 @@ import Episode4 from '../../assets/episode_4.jpg';
 import Episode5 from '../../assets/episode_5.jpg';
 import Episode6 from '../../assets/episode_6.jpg';
 import SmallLoader from '../../components/loader/SmallLoader';
+import Button from '../../components/button/Button';
 
 type MovieItemRouteParams = {
 	movieId: string;
@@ -49,7 +50,7 @@ const MovieDetails = () => {
 			) : (
 				!!movieDetails && (
 					<Fragment>
-						<div className='max-w-md rounded overflow-hidden shadow-lg my-4'>
+						<div className='max-w-lg rounded overflow-hidden shadow-lg my-4'>
 							<img
 								className='w-full'
 								src={getImageUrl()}
@@ -61,27 +62,24 @@ const MovieDetails = () => {
 								</div>
 								<p className='text-gray-700 text-base'>{movieDetails.opening_crawl}</p>
 							</div>
-							<div className='px-6 pt-4 pb-2'>
-								<span className='inline-block bg-violet-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
-									Directed by: {movieDetails.director}
+							<div className='px-6 pt-4 pb-2 flex flex-wrap justify-center'>
+								<span className='bg-violet-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
+									Director: {movieDetails.director}
 								</span>
-								<span className='inline-block bg-violet-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
+								<span className='bg-violet-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
 									Released: {movieDetails.release_date}
 								</span>
 							</div>
-							<div className='p-4 flex justify-center'>
-								<button
-									className='bg-violet-600 hover:bg-violet-800 text-violet-200 text-sm py-2 px-4 rounded shadow hover:shadow-md outline-none focus:outline-none'
-									type='submit'
+							<div className='p-4 flex flex-col'>
+								<Button
+									customClassName='md:w-48 md:self-center'
 									onClick={handleBackClick}
 								>
 									Back to all movies
-								</button>
+								</Button>
 							</div>
 							<footer className='text-slate-600 flex justify-center py-2'>
-								<small>
-									<i>Fetched movie details with RTK Query</i>
-								</small>
+								<p className='italic text-base'>Movie details are fetched with RTK Query</p>
 							</footer>
 						</div>
 					</Fragment>

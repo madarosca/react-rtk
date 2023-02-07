@@ -6,6 +6,7 @@ export type MovieItemType = {
 	release_date: string;
 	opening_crawl: string;
 	imgUrl: string;
+	producer: string;
 };
 
 export type Movies = {

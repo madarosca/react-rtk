@@ -1,9 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppThunk, RootState } from '../../app/store';
+import { RootState } from '../../app/store';
 import { MovieItemType } from './moviesTypes';
 import { BASE_URL, MOVIES_URL } from '../../constants/api';
-import episode1 from '../../assets/episode_1.jpg';
-import episode2 from '../../assets/episode_2.jpg';
 
 export interface MoviesState {
 	count: number;
