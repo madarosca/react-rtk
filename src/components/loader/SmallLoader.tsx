@@ -4,7 +4,7 @@ const SmallLoader = () => {
 	return (
 		<div className='flex flex-col justify-center items-center h-96'>
 			<div className='flex mb-2'>
-				<div className='pr-4'>Please wait</div>
+				<div className='pr-4 text-violet-900'>Please wait</div>
 				<div className={`${circleCommonClasses} self-end mr-1 animate-bounce`}></div>
 				<div className={`${circleCommonClasses} self-end mr-1 animate-bounce100`}></div>
 				<div className={`${circleCommonClasses} self-end animate-bounce200`}></div>

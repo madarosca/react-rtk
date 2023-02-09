@@ -13,8 +13,8 @@ const Accordion: FC<AccordionProps> = ({ title, children, index }) => {
 
     return (
 		<div
-			className={`p-2 border border-gray-200 bg-violet-300 text-black cursor-pointer ${
-				activeIndex !== index ? 'hover:opacity-80 transition ease-in duration-300' : 'hover:opacity-100'
+			className={`p-2 border border-gray-100 bg-violet-200 text-black cursor-pointer ${
+				activeIndex !== index ? 'hover:opacity-70 transition ease-in duration-300' : 'hover:opacity-100'
 			}`}
 		>
 			<div

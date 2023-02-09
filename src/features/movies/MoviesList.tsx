@@ -20,7 +20,7 @@ const MoviesList = () => {
 
 	return (
 		<div className='max-w-screen-sm mx-auto flex flex-col items-center py-4 xs:flex-row h-auto'>
-			<header className='font-medium text-violet-900'>All Star Wars movies</header>
+			<header className='font-medium text-black'>All Star Wars movies</header>
 			{isLoading === 'loading' ? (
 				<BigLoader />
 			) : (

@@ -47,14 +47,15 @@ const MovieDetails = () => {
 	useEffect(() => {
 		const imageUrl = getImageUrl();
 		setImageUrl(imageUrl);
-	}, [getImageUrl]);
+    }, [getImageUrl]);
 
 	return (
 		<div className='max-w-screen-lg mx-auto flex flex-col items-center py-4 xs:flex-row h-auto'>
 			{isLoading ? (
 				<SmallLoader />
 			) : (
-				!!movieDetails && (
+				!!movieDetails &&
+				imageUrl.length && (
 					<Fragment>
 						<div className='max-w-lg rounded overflow-hidden shadow-lg my-4'>
 							<img

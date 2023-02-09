@@ -9,7 +9,7 @@ export type ButtonProps = {
 const Button: FC<ButtonProps> = ({ children, isLoading, customClassName = '', ...otherProps }) => {
 	return (
 		<button
-			className={`${customClassName} bg-violet-600 hover:bg-violet-800 text-violet-200 text-sm py-2 px-4 rounded shadow hover:shadow-md outline-none focus:outline-none`}
+			className={`${customClassName} bg-violet-500 hover:bg-violet-600 text-violet-200 text-sm py-2 px-4 rounded shadow-md hover:shadow-lg outline-none focus:outline-none`}
 			disabled={isLoading}
 			{...otherProps}
 		>

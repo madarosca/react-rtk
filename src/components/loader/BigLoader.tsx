@@ -8,7 +8,7 @@ const BigLoader = () => {
 					<div className='w-16 h-16 border-l-2 border-violet-700 rounded-full animate-spin'></div>
 				</div> */}
 			<div className='w-16 h-16 border-t-4 border-b-4 border-violet-500 rounded-full animate-spin'></div>
-			<div className='flex'>Please wait...</div>
+			<div className='flex text-violet-900'>Please wait...</div>
 		</div>
 	);
 };
