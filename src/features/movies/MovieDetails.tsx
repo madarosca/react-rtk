@@ -1,4 +1,4 @@
-import { Fragment, useCallback } from 'react';
+import { Fragment, useCallback, useState, useEffect } from 'react';
 import { useGetMovieQuery } from '../../app/api/moviesApiSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 import Episode1 from '../../assets/episode_1.jpg';
@@ -17,6 +17,7 @@ type MovieItemRouteParams = {
 const MovieDetails = () => {
 	const { movieId } = useParams<keyof MovieItemRouteParams>() as MovieItemRouteParams;
 	const navigate = useNavigate();
+	const [imageUrl, setImageUrl] = useState('');
 
 	const { data: movieDetails, isLoading } = useGetMovieQuery(movieId);
 
@@ -43,6 +44,11 @@ const MovieDetails = () => {
 		navigate(-1);
 	};
 
+	useEffect(() => {
+		const imageUrl = getImageUrl();
+		setImageUrl(imageUrl);
+	}, [getImageUrl]);
+
 	return (
 		<div className='max-w-screen-lg mx-auto flex flex-col items-center py-4 xs:flex-row h-auto'>
 			{isLoading ? (
@@ -53,7 +59,7 @@ const MovieDetails = () => {
 						<div className='max-w-lg rounded overflow-hidden shadow-lg my-4'>
 							<img
 								className='w-full'
-								src={getImageUrl()}
+								src={imageUrl}
 								alt='Star Wars'
 							/>
 							<div className='px-6 py-4'>
