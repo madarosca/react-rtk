@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useCallback } from 'react';
 import { useGetMovieQuery } from '../../app/api/moviesApiSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 import Episode1 from '../../assets/episode_1.jpg';
@@ -20,7 +20,7 @@ const MovieDetails = () => {
 
 	const { data: movieDetails, isLoading } = useGetMovieQuery(movieId);
 
-	const getImageUrl = () => {
+	const getImageUrl = useCallback(() => {
 		switch (movieDetails?.episode_id) {
 			case 1:
 				return Episode1;
@@ -37,7 +37,7 @@ const MovieDetails = () => {
 			default:
 				return '';
 		}
-	};
+	}, [movieDetails?.episode_id]);
 
 	const handleBackClick = () => {
 		navigate(-1);
